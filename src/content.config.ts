@@ -46,4 +46,18 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { blog, til, projects };
+const now = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/now' }),
+  schema: z.object({
+    updatedAt: z.string(), // ex: '2026-03'
+  }),
+});
+
+const uses = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/uses' }),
+  schema: z.object({
+    title: z.string().default('uses'),
+  }),
+});
+
+export const collections = { blog, til, projects, now, uses };

@@ -1,14 +1,10 @@
 ---
+import { getEntry, render } from 'astro:content';
 import BaseLayout from '../components/layout/BaseLayout.astro';
 
-const stack = [
-  { category: 'infra & cloud', items: ['AWS', 'Cloudflare', 'Vercel', 'Kubernetes'] },
-  { category: 'observabilidade', items: ['Prometheus', 'Grafana', 'OpenTelemetry'] },
-  { category: 'linguagens', items: ['Go', 'Python', 'TypeScript', 'Bash/Fish'] },
-  { category: 'iac', items: ['OpenTofu', 'Ansible'] },
-  { category: 'editor & terminal', items: ['Helix', 'Fish shell', 'Ghostty', 'tmux'] },
-  { category: 'hardware', items: ['MacBook Pro M2 Pro'] },
-];
+const entry = await getEntry('uses', 'index');
+if (!entry) throw new Error('uses/index.md not found');
+const { Content } = await render(entry);
 ---
 
 <BaseLayout
@@ -21,22 +17,12 @@ const stack = [
       <p class="font-mono text-sm text-[#4a607f]">ferramentas e setup</p>
     </header>
 
-    <div class="space-y-8">
-      {stack.map(({ category, items }) => (
-        <section class="space-y-3">
-          <h2 class="font-mono text-xs text-[#00c8e0] uppercase tracking-widest">
-            {category}
-          </h2>
-          <ul class="space-y-1">
-            {items.map((item) => (
-              <li class="text-sm text-[#8fa3c8] flex items-center gap-2">
-                <span class="text-[#1e2d4a]">—</span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </section>
-      ))}
+    <div class="prose prose-invert prose-sm max-w-none
+      prose-headings:font-mono prose-headings:text-xs prose-headings:text-[#00c8e0]
+      prose-headings:uppercase prose-headings:tracking-widest prose-headings:font-semibold
+      prose-p:text-[#8fa3c8] prose-li:text-[#8fa3c8]
+      prose-a:text-[#00c8e0] prose-a:no-underline hover:prose-a:underline">
+      <Content />
     </div>
   </article>
 </BaseLayout>
