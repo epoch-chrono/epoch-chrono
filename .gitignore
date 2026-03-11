@@ -1,0 +1,75 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build output
+dist/
+.output/
+.vercel/
+
+# Astro
+.astro/
+
+# Environment & secrets
+.env
+.env.*
+.envrc
+.envrc.*
+!.env.example
+!.envrc.example
+
+# Backups
+backups-and-rollbacks/
+
+# Drafts locais (fora do fluxo de conteúdo padrão)
+drafts/inbox.md
+drafts/scratch/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.helix/
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Claude App — contém credenciais
+.mind/PROJECT_INSTRUCTIONS.claude.md
+
+# Mise local overrides
+.mise.local.toml
+
+## Astro added
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/

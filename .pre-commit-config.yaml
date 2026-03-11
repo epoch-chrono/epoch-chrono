@@ -1,0 +1,58 @@
+# .pre-commit-config.yaml
+# Instalar: mise use -g pre-commit && pre-commit install && pre-commit install --hook-type commit-msg
+# Atualizar hooks: pre-commit autoupdate
+
+repos:
+
+  # ── Hooks gerais ────────────────────────────────────────────────────────────
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-yaml               # valida sintaxe YAML (configs, workflows)
+      - id: check-toml               # valida sintaxe TOML (configs Astro/mise)
+      - id: check-json               # valida JSON (tsconfig, package.json)
+      - id: end-of-file-fixer        # garante newline no final de cada arquivo
+      - id: trailing-whitespace      # remove espaços no fim de linha
+      - id: mixed-line-ending        # normaliza CRLF → LF
+        args: [--fix=lf]
+      - id: check-merge-conflict     # bloqueia commit com markers de merge conflict
+      - id: check-case-conflict      # previne conflitos de case (macOS ↔ Linux)
+      - id: check-added-large-files  # bloqueia arquivos grandes acidentais
+        args: [--maxkb=500]
+      - id: no-commit-to-branch      # protege branch main de commits diretos
+        args: [--branch, main]
+
+  # ── Detecção de segredos — CRÍTICO ──────────────────────────────────────────
+  # Bloqueia tokens, API keys, senhas antes de chegarem ao repo.
+  # Na primeira execução com arquivos existentes: gitleaks detect --no-git
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.0
+    hooks:
+      - id: gitleaks
+
+  # ── Conventional Commits ────────────────────────────────────────────────────
+  # Valida mensagem de commit: feat:, fix:, content:, chore:, etc.
+  # Hook tipo commit-msg — requer: pre-commit install --hook-type commit-msg
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v4.13.9
+    hooks:
+      - id: commitizen
+        stages: [commit-msg]
+
+  # ── Markdown / Conteúdo ─────────────────────────────────────────────────────
+  # Lint de posts de blog, TIL e docs — garante qualidade mínima de formatação.
+  # Configuração em .markdownlint.yaml (ver abaixo).
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.48.0
+    hooks:
+      - id: markdownlint
+        language: system          # usa o markdownlint-cli global (mise) — evita npm install isolado
+        args: [--config, .markdownlint.yaml]
+        types: [markdown]
+
+  # ── GitHub Actions ──────────────────────────────────────────────────────────
+  # Valida sintaxe e semântica dos workflows antes de fazer push.
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.11
+    hooks:
+      - id: actionlint

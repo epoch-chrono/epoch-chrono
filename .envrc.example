@@ -1,0 +1,42 @@
+# direnv — carregado automaticamente ao entrar no diretório
+# NÃO commitar — arquivo listado no .gitignore
+source_up 2>/dev/null || true
+
+# === mise === #
+export MISE_NODE_DEFAULT_PACKAGES_FILE="$PWD/.default-npm-packages"
+export MISE_PYTHON_DEFAULT_PACKAGES_FILE="$PWD/.default-python-packages"
+
+# === Identidade === #
+export SITE_DOMAIN='epoch-chrono.com'
+export SITE_AUTHOR='Vitor Jr'
+export EMAIL_AUTHOR='vitor@epoch-chrono.com'
+export GITHUB_ORG='epoch-chrono-com'
+export GITHUB_USER='epoch-chrono'
+export GITHUB_REPO='https://github.com/epoch-chrono/epoch-chrono'
+
+
+# === Deploy - Vercel === #
+export VERCEL_API_TOKEN='vcp_...'
+export VERCEL_PROJECT='epoch-chrono'
+
+# === DNS - Cloudflare === #
+export CLOUDFLARE_API_TOKEN='bELc...'
+export CLOUDFLARE_ZONE_ID='f31...'
+export CLOUDFLARE_ACCOUNT_ID='621...'
+
+# === Analytics — Cloudflare Web Analytics === #
+export PUBLIC_CF_ANALYTICS_TOKEN='bac...'  # preencher após ativar CF Web Analytics na zona
+
+# === Newsletter - Buttondown === #
+export BUTTONDOWN_API_KEY='9ec...'
+export BUTTONDOWN_API='https://api.buttondown.email/v1'
+
+# === Notion === #
+export NOTION_API_TOKEN='ntn_19...'
+export NOTION_BASE_PAGE='https://www.notion.so/epoch-chrono/epoch-chrono-com-site-3204...'
+
+# === Github === #
+export GITHUB_API_TOKEN='ghp_23...'
+
+# === OnePassword === #
+export SSH_AUTH_SOCK=''

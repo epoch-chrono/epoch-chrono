@@ -1,0 +1,27 @@
+# .markdownlint.yaml
+# Lint para posts de blog, TIL e docs em .mind/
+# Ref: https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+
+default: true
+
+# MD013 — line length: desativado (posts técnicos têm URLs e code blocks longos)
+MD013: false
+
+# MD033 — HTML inline: permitido em MDX e posts com componentes Astro
+MD033: false
+
+# MD041 — first line must be h1: desativado (frontmatter vem antes)
+MD041: false
+
+# MD024 — no duplicate headings: permitir em documentos longos com seções repetidas
+MD024:
+  siblings_only: true
+
+# MD007 — unordered list indentation: 2 espaços
+MD007:
+  indent: 2
+
+# MD030 — spaces after list markers: 1 espaço
+MD030:
+  ul_single: 1
+  ol_single: 1
