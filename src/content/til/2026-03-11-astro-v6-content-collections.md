@@ -1,5 +1,5 @@
 ---
-title: "TIL: Astro v6 mudou a API de content collections"
+title: "TIL (Today I Learned): Astro v6 mudou a API de content collections"
 pubDate: 2026-03-11
 tags:
   - astro

@@ -32,7 +32,7 @@ title: uses
 - Helix
 - Fish shell
 - Ghostty
-- tmux
+- zellij
 
 ## hardware
 
