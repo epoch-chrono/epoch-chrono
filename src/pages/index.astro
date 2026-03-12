@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../components/layout/BaseLayout.astro';
+import NewsletterForm from '../components/common/NewsletterForm.astro';
 
 const socials = [
   { href: 'https://github.com/vjunior1981', label: 'github' },
@@ -107,6 +108,9 @@ const navLinks = [
         ))}
       </ul>
     </nav>
+
+    <!-- Newsletter -->
+    <NewsletterForm />
 
   </section>
 </BaseLayout>
