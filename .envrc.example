@@ -14,34 +14,38 @@ export GITHUB_ORG='epoch-chrono-com'
 export GITHUB_USER='epoch-chrono'
 export GITHUB_REPO='https://github.com/epoch-chrono/epoch-chrono-site'
 
+
 # === Deploy - Vercel === #
-export VERCEL_API_TOKEN='vcp_...'
+export VERCEL_API_TOKEN='vcp_2...'
+export VERCEL_AI_API_TOKEN='vck_3...'
 export VERCEL_PROJECT='epoch-chrono'
 
 # === DNS - Cloudflare === #
-export CLOUDFLARE_API_TOKEN='bELc...'
-export CLOUDFLARE_ZONE_ID='f31...'
-export CLOUDFLARE_ACCOUNT_ID='621...'
+export CLOUDFLARE_API_TOKEN='bELcE...'
+export CLOUDFLARE_ZONE_ID='f3109...'
+export CLOUDFLARE_ACCOUNT_ID='621cb...'
 
 # === Analytics — Cloudflare Web Analytics === #
-export PUBLIC_CF_ANALYTICS_TOKEN='bac...'  # preencher após ativar CF Web Analytics na zona
+export PUBLIC_CF_ANALYTICS_TOKEN='bac1b...'
 
 # === Newsletter - Buttondown === #
-export BUTTONDOWN_API_KEY='9ec...'
+export BUTTONDOWN_API_KEY='9ec09...'
 export BUTTONDOWN_API='https://api.buttondown.email/v1'
 
 # === Notion === #
-export NOTION_API_TOKEN='ntn_19...'
-export NOTION_BASE_PAGE='https://www.notion.so/epoch-chrono/epoch-chrono-com-site-3204...'
+export NOTION_API_TOKEN='ntn_1...'
+export NOTION_BASE_PAGE='https://www.notion.so/epoch-chrono/epoch-chrono-com-site-320490af342d80e7a352d52661aad5a9'
 
 # === Github === #
-export GITHUB_API_TOKEN='ghp_23...'
+export GITHUB_API_TOKEN='ghp_2...'
 
 # === Stackshare === #
-export STACKSHARE_API_TOKEN='sk_live_dc...'
+export STACKSHARE_API_TOKEN='sk_li...'
 
 # === OnePassword === #
 export SSH_AUTH_SOCK=''
 
 # === Path === #
 export PATH="$PWD/bin:$PATH"
+
+export SUPER_SEGRED='sakjd...'
