@@ -1,0 +1,87 @@
+---
+// NewsletterForm.astro — Buttondown subscribe form
+// Usa embed endpoint público (sem expor API key no client)
+const BUTTONDOWN_USERNAME = 'vjunior1981';
+const EMBED_URL = `https://buttondown.email/api/emails/embed-subscribe/${BUTTONDOWN_USERNAME}`;
+---
+
+<div class="newsletter-wrap border border-[#1e2d4a] bg-[#0f1629] rounded-sm p-6">
+  <p class="font-mono text-xs text-[#4a607f] uppercase tracking-widest mb-1">newsletter</p>
+  <p class="text-sm text-[#8fa3c8] mb-4">
+    Posts novos, TILs e notas ocasionais. Sem spam, sem frequência forçada.
+  </p>
+
+  <form
+    id="newsletter-form"
+    action={EMBED_URL}
+    method="post"
+    target="popupwindow"
+    class="flex gap-2"
+  >
+    <input
+      id="newsletter-email"
+      type="email"
+      name="email"
+      placeholder="seu@email.com"
+      required
+      autocomplete="email"
+      class="flex-1 bg-[#0a0e1a] border border-[#1e2d4a] text-[#e8edf7] placeholder-[#4a607f]
+             font-mono text-sm px-3 py-2 rounded-sm outline-none
+             focus:border-[#00c8e0] focus:ring-1 focus:ring-[#00c8e030]
+             transition-colors"
+    />
+    <button
+      type="submit"
+      class="bg-transparent border border-[#00c8e0] text-[#00c8e0] font-mono text-sm
+             px-4 py-2 rounded-sm cursor-pointer
+             hover:bg-[#00c8e010] active:bg-[#00c8e020]
+             transition-colors whitespace-nowrap"
+    >
+      inscrever
+    </button>
+  </form>
+
+  <p id="newsletter-msg" class="hidden font-mono text-xs mt-3"></p>
+</div>
+
+<script>
+  const form = document.getElementById('newsletter-form') as HTMLFormElement | null;
+  const msg = document.getElementById('newsletter-msg') as HTMLElement | null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form || !msg) return;
+
+    const email = (form.querySelector('#newsletter-email') as HTMLInputElement)?.value;
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+
+    btn.textContent = '...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ email }),
+      });
+
+      msg.classList.remove('hidden', 'text-[#e84060]', 'text-[#00c8e0]');
+
+      if (res.ok) {
+        msg.textContent = '✓ quase lá — confirme o email que enviamos';
+        msg.classList.add('text-[#00c8e0]');
+        form.reset();
+      } else {
+        msg.textContent = '✗ algo deu errado. tente novamente.';
+        msg.classList.add('text-[#e84060]');
+        btn.textContent = 'inscrever';
+        btn.disabled = false;
+      }
+    } catch {
+      msg.textContent = '✗ erro de conexão. tente novamente.';
+      msg.classList.add('text-[#e84060]');
+      btn.textContent = 'inscrever';
+      btn.disabled = false;
+    }
+  });
+</script>
