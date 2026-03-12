@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../components/layout/BaseLayout.astro';
 import TilCard from '../../components/til/TilCard.astro';
+import NewsletterForm from '../../components/common/NewsletterForm.astro';
 import { getPublishedTils } from '../../utils/content';
 
 const tils = await getPublishedTils();
@@ -30,5 +31,7 @@ const tils = await getPublishedTils();
         ))}
       </div>
     )}
+
+    <NewsletterForm />
   </section>
 </BaseLayout>

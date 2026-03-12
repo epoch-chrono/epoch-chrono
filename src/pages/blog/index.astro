@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../components/layout/BaseLayout.astro';
 import PostCard from '../../components/blog/PostCard.astro';
+import NewsletterForm from '../../components/common/NewsletterForm.astro';
 import { getPublishedPosts } from '../../utils/content';
 
 const posts = await getPublishedPosts();
@@ -32,5 +33,7 @@ const posts = await getPublishedPosts();
         ))}
       </div>
     )}
+
+    <NewsletterForm />
   </section>
 </BaseLayout>
