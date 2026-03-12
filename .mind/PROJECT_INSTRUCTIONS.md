@@ -5,7 +5,7 @@
 ## Pasta raiz
 
 ```text
-$HOME/Git/OpenCodeSpace/personal/epoch-chrono
+$HOME/Git/OpenCodeSpace/personal/epoch-chrono-site
 ```
 
 > **Este projeto é trabalhado diretamente com Claude** — não usa fluxo OpenCode/handover.
@@ -70,50 +70,6 @@ Ao encerrar:
 
 Specs completas dos comandos `[mind-*]` em `.mind/commands/` — buscar via CONTEXT.md se necessário.
 
-## Variables
-
-> Valores reais definidos em `.envrc` (não commitado).
-> Ver `.envrc.example` para lista completa de variáveis necessárias.
-
-```bash
-# Identidade
-SITE_DOMAIN='epoch-chrono.com'
-SITE_AUTHOR='Vitor Jr'
-EMAIL_AUTHOR='vitor@epoch-chrono.com'
-GITHUB_ORG='epoch-chrono-com'
-GITHUB_USER='epoch-chrono'
-GITHUB_REPO='https://github.com/epoch-chrono/epoch-chrono'
-
-# Deploy — Vercel
-VERCEL_API_TOKEN=        # ver .envrc
-VERCEL_PROJECT='epoch-chrono'
-
-# DNS — Cloudflare (domínio epoch-chrono.com)
-CLOUDFLARE_API_TOKEN=    # ver .envrc
-CLOUDFLARE_ZONE_ID=      # ver .envrc
-CLOUDFLARE_ACCOUNT_ID=   # ver .envrc
-
-# Analytics — Cloudflare Web Analytics
-PUBLIC_CF_ANALYTICS_TOKEN=  # ver .envrc
-
-# Newsletter — Buttondown
-BUTTONDOWN_API_KEY=      # ver .envrc
-BUTTONDOWN_API='https://api.buttondown.email/v1'
-
-# Notion (conta pessoal Epoch)
-NOTION_API_TOKEN=        # ver .envrc
-NOTION_BASE_PAGE='https://www.notion.so/epoch-chrono/epoch-chrono-com-site-320490af342d80e7a352d52661aad5a9'
-
-# GitHub (org epoch-chrono — para Actions, releases, gists)
-GITHUB_API_TOKEN=        # ver .envrc
-
-# Stackshare
-STACKSHARE_API_TOKEN=    # ver .envrc
-
-# === OnePassword === #
-export SSH_AUTH_SOCK=''
-```
-
 ## Tooling
 
 ### Deploy & Hosting
@@ -158,6 +114,7 @@ git cz
 git push origin <branch>
 gh pr create --title "..." --body "" --base main --head <branch> \
   && gh pr merge (gh pr list --repo epoch-chrono/epoch-chrono-site --state open --json number -q '.[].number') --merge --delete-branch
+```
 
 ### Mise (gerenciamento de versões)
 
@@ -184,3 +141,15 @@ mise use pnpm@latest
 - Títulos de conversa: `{YYYYMMDD-HHmm}-{ProjetoSlug}-{DescricaoCurta}` onde slug = `epoch-chrono`
 - Tracking: GitHub Issues no repo [epoch-chrono/epoch-chrono-site](https://github.com/epoch-chrono/epoch-chrono-site)
 - Posts rascunho: nunca commitar com `draft: false` sem revisão
+
+<!-- BEGIN_VARIABLES -->
+## Variables
+
+> Valores reais definidos em `.envrc` (não commitado).
+> Ver `.envrc.example` para lista completa de variáveis necessárias.
+> Este bloco é gerado automaticamente por `bin/gen-claude-instructions` — não editar manualmente.
+
+```bash
+# conteúdo gerado a partir do .envrc — ver .envrc.example para valores mascarados
+```
+<!-- END_VARIABLES -->
